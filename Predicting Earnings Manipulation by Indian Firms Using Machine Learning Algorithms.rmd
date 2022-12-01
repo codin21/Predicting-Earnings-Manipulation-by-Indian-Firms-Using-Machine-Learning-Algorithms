@@ -1,0 +1,40 @@
+***Q1. Beneish's (1999) M-score consists of 8 ratios to describe financial statement deformation resulting from earnings manipulation or identifying management preferences in earnings manipulation. M-score can be viewed as the tool to portray the amount of likelihood of earning manipulation and other fraudulent activities. Research conducted by Warshavsky (2012),Mantone (2013) and Omar et al. (2014) suggest a total M-score higher than -2.22 is taken as a signal of potential manipulation in earnings and fraudulent financial reporting.***
+**𝑀 − 𝑆𝑐𝑜𝑟𝑒 = −4.84 + 0.92𝐷𝑆𝑅𝐼 + 0.528𝐺𝑀𝐼 + 0.404𝐴𝑄𝐼 + 0.892𝑆𝐺𝐼 + 0.115𝐷𝐸𝑃𝐼− 0.172𝑆𝐺𝐴𝐼 + 4.679𝑇𝐴𝑇𝐴 − 0.327LVGI**
+
+***The threshold value is -1.78 for the model whose coefficients are reported above. (see Beneish 1999, Beneish, Lee, and Nichols 2013, and Beneish and Vorst 2020). ***
+
+***If M-score is less than -1.78, the company is unlikely to be a manipulator. For example, an M-score value of -2.50 suggests a low likelihood of manipulation.***
+***If M-score is greater than −1.78, the company is likely to be a manipulator. For example, an M-score value of -1.50 suggests a high likelihood of manipulation.***
+
+***Beneish M-score is a probabilistic model, so it cannot detect companies that manipulate their earnings with 100% accuracy. Financial institutions were excluded from the sample in Beneish paper when calculating M-score. It means that the M-score for fraud detection cannot be applied among financial firms (banks, insurance)***
+***The threshold value is -1.78 for the model whose coefficients are reported above. (see Beneish 1999, Beneish, Lee, and Nichols 2013, and Beneish and Vorst 2020).***
+
+***If M-score is less than -1.78, the company is unlikely to be a manipulator. For example, an M-score value of -2.50 suggests a low likelihood of manipulation.***
+***If M-score is greater than −1.78, the company is likely to be a manipulator. For example, an M-score value of -1.50 suggests a high likelihood of manipulation.***
+
+***Beneish M-score is a probabilistic model, so it cannot detect companies that manipulate their earnings with 100% accuracy.Financial institutions were excluded from the sample in Beneish paper when calculating M-score. It means that the M-score for fraud detection cannot be applied among financial firms (banks, insurance***
+
+***our average for m scoreis apprx -2.4 which is smaller than that of the threshold, hence showing the unbalanced nature of the model***
+
+***Q2 In the spreadsheet, the number of manipulators is much less than non-manipulators, 4% to give an estimate. Here, the class “non-manipulator” is called the majority class, and the much smaller in size “manipulator” class is called the minority class. This poses the problem of Imbalanced data. Imbalanced data refers to those types of datasets where the target class has an uneven distribution of observations, i.e one class label has a very high number of observations and the other has a very low number of observations***
+
+***More such example of imbalanced data is – · Disease diagnosis, Customer, churn prediction, Natural disaster***
+
+***The main problem with imbalanced dataset prediction is how accurately are we actually predicting both majority and minority class. In the example of disease diagnosis. We assume, we are going to predict disease from an existing dataset where for every 100 records only 5 patients are diagnosed with the disease. So, the majority class is 95% with no disease and the minority class is only 5% with the disease. Now, assume our model predicts that all 100 out of 100 patients have no disease.***
+
+***Sometimes when the records of a certain class are much more than the other class, our classifier may get biased towards the prediction. In this case, the confusion matrix for the classification problem shows how well our model classifies the target classes and we arrive at the accuracy of the model from the confusion matrix. It is calculated based on the total no of correct predictions by the model divided by the total no of predictions. In the above case it is (0+95)/(0+95+0+5)=0.95 or 95%. It means that the model fails to identify the minority class yet the accuracy score of the model will be 95%***
+
+
+
+**1. Choose Proper Evaluation Metric: The accuracy of a classifier is the total number of correct predictions by the classifier divided by the total number of predictions. This may be good enough for a well-balanced class but not ideal for the imbalanced class problem. The other metrics such as precision is the measure of how accurate the classifier’s prediction of a specific class and recall is the measure of the classifier’s ability to identify a class.**
+
+***2. Resampling (Oversampling and Undersampling) This technique is used to upsample or downsample the minority or majority class. When we are using an imbalanced dataset, we can oversample the minority class using replacement. This technique is called oversampling. Similarly, we can randomly delete rows from the majority class to match them with the minority class which is called undersampling. After sampling the data we can get a balanced dataset for both majority and minority classes. So, when both classes have a similar number of records present in the dataset, we can assume that the classifier will give equal importance to both classes.***
+
+***3. SMOTE Synthetic Minority Oversampling Technique or SMOTE is another technique to oversample the minority class. Simply adding duplicate records of minority class often don’t add any new information to the model. In SMOTE new instances are synthesized from the existing data. If we explain it in simple words, SMOTE looks into minority class instances and use k nearest neighbor to select a random nearest neighbor, and a synthetic instance is created randomly in feature space.***
+
+***4. BalancedBaggingClassifier: When we try to use a usual classifier to classify an imbalanced dataset, the model favors the majority class due to its larger volume presence. A BalancedBaggingClassifier is the same as a sklearn classifier but with additional balancing. It includes an additional step to balance the training set at the time of fit for a given sampler. This classifier takes two special parameters “sampling_strategy” and “replacement”. The sampling_strategy decides the type of resampling required (e.g. ‘majority’ – resample only the majority class, ‘all’ – resample all classes, etc) and replacement decides whether it is going to be a sample with replacement or not.***
+
+**5. Threshold moving: In the case of our classifiers, many times classifiers actually predict the probability of class membership. We assign those prediction’s probabilities to a certain class based on a threshold which is usually 0.5, i.e. if the probabilities < 0.5 it belongs to a certain class, and if not it belongs to the other class.**
+
+***For imbalanced class problems, this default threshold may not work properly. We need to change the threshold to the optimum value so that it can efficiently separate two classes. We can use ROC Curves and Precision-Recall Curves to find the optimal threshold for the classifier. We can also use a grid search method or search within a set of values to identify the optimal value.***
+
